@@ -2,20 +2,15 @@ import { useState, useEffect } from "react";
 
 function GeneratePhoneNumber(amount) {
   const numbers = [];
+  function GenerateSegment() {
+    return Math.floor(Math.random() * 100)
+      .toString()
+      .padStart(2, "0");
+  }
   for (let i = 0; i < amount; i++) {
-    const segment1 = Math.floor(Math.random() * 1000)
-      .toString()
-      .padStart(3, "0");
-    const segment2 = Math.floor(Math.random() * 100)
-      .toString()
-      .padStart(2, "0");
-    const segment3 = Math.floor(Math.random() * 100)
-      .toString()
-      .padStart(2, "0");
-    const segment4 = Math.floor(Math.random() * 100)
-      .toString()
-      .padStart(2, "0");
-    numbers.push(`0 ${segment1} ${segment2} ${segment3} ${segment4}`);
+    numbers.push(
+      `${GenerateSegment()} ${GenerateSegment()} ${GenerateSegment()} ${GenerateSegment()} ${GenerateSegment()}`
+    );
   }
   return numbers;
 }
